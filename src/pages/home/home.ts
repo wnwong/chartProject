@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {ZoomingData, Service} from "../../providers/chart-service/chart-service";
-import {DxPieChartComponent} from "devextreme-angular";
+import {DxChartComponent} from "devextreme-angular";
 
 
 @Component({
@@ -9,9 +9,10 @@ import {DxPieChartComponent} from "devextreme-angular";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  @ViewChild(DxPieChartComponent) chart: any;
+  @ViewChild('zoomedChart') chart: DxChartComponent;
   zoomingData: ZoomingData[];
   selectedRegion = "";
+  types: string[] = ["area", "stackedarea", "fullstackedarea"];
 
   constructor(public navCtrl: NavController, public service: Service) {
     this.zoomingData = service.getZoomingData();

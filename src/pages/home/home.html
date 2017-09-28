@@ -13,6 +13,7 @@
   </p>
   <dx-button text="Hello world"></dx-button>
   <dx-chart
+    #zoomedChart
     id="chart"
     palette="Harmony Light"
     [dataSource]="zoomingData"
@@ -27,6 +28,15 @@
     </dxo-tooltip>
     <!--<dxo-scroll-bar  [visible]="true"></dxo-scroll-bar>-->
     <dxo-legend [visible]="false"></dxo-legend>
-    <dxo-argument-axis [valueMarginsEnabled]="false"></dxo-argument-axis>
+    <dxo-argument-axis [valueMarginsEnabled]="false">
+      <dxi-constant-line [value]="40"></dxi-constant-line>
+      <dxi-constant-line [value]="70"></dxi-constant-line>
+    </dxo-argument-axis>
+    <dxo-common-series-settings
+      #commonSeries
+      argumentField="country"
+      type="area">
+      <dxo-point [visible]="true"></dxo-point>
+    </dxo-common-series-settings>
   </dx-chart>
 </ion-content>
