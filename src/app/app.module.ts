@@ -7,6 +7,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { DxChartModule } from 'devextreme-angular';
+import { DxButtonModule } from 'devextreme-angular/ui/button';
+import {Service} from "../providers/chart-service/chart-service";
+import {ZoomingData} from "../providers/chart-service/chart-service";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -14,7 +19,9 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    DxChartModule,
+    DxButtonModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +31,9 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ZoomingData,
+    Service
   ]
 })
 export class AppModule {}
